@@ -11,6 +11,7 @@
 		0AB27BC02C8EF5D1002ADE89 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB27BBF2C8EF5D1002ADE89 /* ContentView.swift */; };
 		0AB27BC22C8EF5D4002ADE89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AB27BC12C8EF5D4002ADE89 /* Assets.xcassets */; };
 		0AB27BC52C8EF5D4002ADE89 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AB27BC42C8EF5D4002ADE89 /* Preview Assets.xcassets */; };
+		0AB27BCC2C9459A9002ADE89 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB27BCB2C9459A9002ADE89 /* ProgressBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		0AB27BBF2C8EF5D1002ADE89 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0AB27BC12C8EF5D4002ADE89 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0AB27BC42C8EF5D4002ADE89 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		0AB27BCB2C9459A9002ADE89 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			children = (
 				0AB27BBD2C8EF5D1002ADE89 /* SST_Inc_ProjectApp.swift */,
 				0AB27BBF2C8EF5D1002ADE89 /* ContentView.swift */,
+				0AB27BCB2C9459A9002ADE89 /* ProgressBar.swift */,
 				0AB27BC12C8EF5D4002ADE89 /* Assets.xcassets */,
 				0AB27BC32C8EF5D4002ADE89 /* Preview Content */,
 			);
@@ -138,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0AB27BC02C8EF5D1002ADE89 /* ContentView.swift in Sources */,
+				0AB27BCC2C9459A9002ADE89 /* ProgressBar.swift in Sources */,
 				0AB27BBE2C8EF5D1002ADE89 /* SST_Inc_ProjectApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
