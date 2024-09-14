@@ -12,6 +12,7 @@ struct ProgressBar: View {
     @State var totalWidth: CGFloat = 300
     @State var dashWidth: CGFloat = 8
     @State var dashSpacing: CGFloat = 2
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 5){
             Text("\(Int(progress * 100)) %")
