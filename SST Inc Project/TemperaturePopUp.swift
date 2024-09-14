@@ -10,7 +10,9 @@ import SwiftUI
 struct TemperaturePopUp: View {
     @Binding var isVisible: Bool
     @State private var tempNum: Int = 65
-    
+    let monospaceFont = Font
+        .system(size: 16)
+        .monospaced()
     var body: some View {
         if isVisible {
             ZStack {
@@ -38,6 +40,7 @@ struct TemperaturePopUp: View {
                         
                         VStack {
                             Text("Set the temperature to 73°C")
+                                .font(monospaceFont)
                                 .foregroundStyle(.green)
                             
                             HStack {
