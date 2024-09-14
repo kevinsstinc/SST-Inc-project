@@ -20,14 +20,23 @@ struct ContentView: View {
                 ProgressBar()
                 Spacer()
             }
-        }
-        VStack{
-            Button{
-                isPopUpVisble = true
-            }label:{
-                Text("Show temp popup")
+            if isPopUpVisble{
+                TemperaturePopUp(isVisible: $isPopUpVisble)
             }
-            TemperaturePopUp(isVisible: $isPopUpVisble)
+        }
+        .onAppear{
+                showTempPopUpRandomly()
+        }
+            
+        
+    }
+    private func showTempPopUpRandomly(){
+        let randomTime = Double.random(in: 1...100)
+        print("Random Time: \(randomTime)")
+        DispatchQueue.main.asyncAfter(deadline: .now() + randomTime){
+            isPopUpVisble = true
+            print("Temp pop up should appear")
+            showTempPopUpRandomly()
         }
     }
 }

@@ -80,6 +80,7 @@ struct TemperaturePopUp: View {
                                         .overlay {
                                             Rectangle()
                                                 .stroke(Color.green, lineWidth: 3)
+                                                
                                             Text(">")
                                                 .foregroundStyle(.green)
                                         }
