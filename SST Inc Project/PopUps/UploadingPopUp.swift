@@ -87,7 +87,7 @@ struct UploadingPopUp: View {
     }
         private func startUpload(){
             isUploading = true
-            Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true){ timer in
+            Timer.scheduledTimer(withTimeInterval: 1.5, repeats: true){ timer in
                 if progress < 1.0{
                     progress += 0.1
                     checkUpload()

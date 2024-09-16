@@ -16,7 +16,13 @@ struct ContentView: View {
     var body: some View {
         ZStack{
             
-            Color.black.ignoresSafeArea()
+                
+                
+                    StartPage()
+                        .ignoresSafeArea()
+                        .blur(radius: 1)
+                
+                
             VStack{
                 ProgressBar()
                 Spacer()
@@ -27,11 +33,6 @@ struct ContentView: View {
             if isPopUpVisble2{
                 UploadingPopUp(isVisible: $isPopUpVisble2)
             }
-//            Button{
-//                isPopUpVisble2 = true
-//            }label:{
-//                Text("SHow upload pop up")
-//            }
         }
         .onAppear{
                 allPopUps()

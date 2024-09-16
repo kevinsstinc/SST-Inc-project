@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0A166B812C95B965003725AF /* UploadingPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A166B802C95B965003725AF /* UploadingPopUp.swift */; };
+		0A166B8C2C983E44003725AF /* StartPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A166B8B2C983E44003725AF /* StartPage.swift */; };
 		0AB27BBE2C8EF5D1002ADE89 /* SST_Inc_ProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB27BBD2C8EF5D1002ADE89 /* SST_Inc_ProjectApp.swift */; };
 		0AB27BC02C8EF5D1002ADE89 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB27BBF2C8EF5D1002ADE89 /* ContentView.swift */; };
 		0AB27BC22C8EF5D4002ADE89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AB27BC12C8EF5D4002ADE89 /* Assets.xcassets */; };
@@ -18,6 +19,7 @@
 
 /* Begin PBXFileReference section */
 		0A166B802C95B965003725AF /* UploadingPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadingPopUp.swift; sourceTree = "<group>"; };
+		0A166B8B2C983E44003725AF /* StartPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPage.swift; sourceTree = "<group>"; };
 		0AB27BBA2C8EF5D1002ADE89 /* SST Inc Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SST Inc Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AB27BBD2C8EF5D1002ADE89 /* SST_Inc_ProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SST_Inc_ProjectApp.swift; sourceTree = "<group>"; };
 		0AB27BBF2C8EF5D1002ADE89 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -38,6 +40,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A166B842C95D3E9003725AF /* PopUps */ = {
+			isa = PBXGroup;
+			children = (
+				0AB27BCF2C953C7C002ADE89 /* TemperaturePopUp.swift */,
+				0A166B802C95B965003725AF /* UploadingPopUp.swift */,
+			);
+			path = PopUps;
+			sourceTree = "<group>";
+		};
+		0A166B862C983DC9003725AF /* Answers to questions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Answers to questions";
+			sourceTree = "<group>";
+		};
 		0AB27BB12C8EF5D1002ADE89 = {
 			isa = PBXGroup;
 			children = (
@@ -59,9 +77,10 @@
 			children = (
 				0AB27BBD2C8EF5D1002ADE89 /* SST_Inc_ProjectApp.swift */,
 				0AB27BBF2C8EF5D1002ADE89 /* ContentView.swift */,
-				0AB27BCF2C953C7C002ADE89 /* TemperaturePopUp.swift */,
+				0A166B8B2C983E44003725AF /* StartPage.swift */,
 				0AB27BCB2C9459A9002ADE89 /* ProgressBar.swift */,
-				0A166B802C95B965003725AF /* UploadingPopUp.swift */,
+				0A166B862C983DC9003725AF /* Answers to questions */,
+				0A166B842C95D3E9003725AF /* PopUps */,
 				0AB27BC12C8EF5D4002ADE89 /* Assets.xcassets */,
 				0AB27BC32C8EF5D4002ADE89 /* Preview Content */,
 			);
@@ -147,6 +166,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0AB27BC02C8EF5D1002ADE89 /* ContentView.swift in Sources */,
+				0A166B8C2C983E44003725AF /* StartPage.swift in Sources */,
 				0AB27BCC2C9459A9002ADE89 /* ProgressBar.swift in Sources */,
 				0AB27BBE2C8EF5D1002ADE89 /* SST_Inc_ProjectApp.swift in Sources */,
 				0A166B812C95B965003725AF /* UploadingPopUp.swift in Sources */,
