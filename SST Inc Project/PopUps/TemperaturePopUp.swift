@@ -9,7 +9,8 @@ import SwiftUI
 
 struct TemperaturePopUp: View {
     @Binding var isVisible: Bool
-    @State private var tempNum: Int = 65
+    @State private var tempNum: Int = Int.random(in: 1...100)
+    @State private var targetTemp: Int = Int.random(in: 1...100)
     let monospaceFont = Font
         .system(size: 16)
         .monospaced()
@@ -96,7 +97,7 @@ struct TemperaturePopUp: View {
     }
     
     private func checkTemp() {
-        if tempNum >= 73 {
+        if tempNum >= targetTemp {
             isVisible = false
         }
     }
