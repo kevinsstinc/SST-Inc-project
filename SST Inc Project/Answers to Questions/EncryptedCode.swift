@@ -10,6 +10,7 @@ import SwiftUI
 struct EncryptedCode: View {
     @State private var inputText = ""
     @State private var showingAlert = false
+    @State private var fakeAlert = false
     var body: some View {
         ZStack{
             Color.black.ignoresSafeArea()

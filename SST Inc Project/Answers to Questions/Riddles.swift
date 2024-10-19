@@ -11,10 +11,12 @@ struct Riddles: View {
     @State private var isFirstTextVisible = true
     @State private var isSecondTextVisible = false
     @State private var isThirdTextVisible = false
-    @State private var isFourthTextVisble = false
+    @State private var isFourthTextVisible = false
     @State private var isActive1 = false
     @State private var isActive2 = false
     @State private var isActive3 = false
+    @State private var showingAlertForCorrectAnswer = false
+    @State private var showingAlertForWrongtAnswer = false
     var body: some View {
         ZStack{
             Color.black.ignoresSafeArea()
@@ -26,7 +28,7 @@ struct Riddles: View {
                         .multilineTextAlignment(.center)
                         .font(.largeTitle)
                         .onAppear{
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 5.0){
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
                                 isFirstTextVisible = false
                                 isSecondTextVisible = true
                             }
@@ -34,11 +36,11 @@ struct Riddles: View {
                 }
                 if isSecondTextVisible{
                     Spacer()
-                    TextType(fullText: "I'll give you three riddles. Figure it out.")
+                    TextType(fullText: "I'll give you three clues. Figure it out.")
                         .multilineTextAlignment(.center)
                         .font(.largeTitle)
                         .onAppear{
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 5.0){
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
                                 
                                 isSecondTextVisible = false
                                 isThirdTextVisible = true
@@ -51,7 +53,7 @@ struct Riddles: View {
                         Button{
                             isActive1 = true
                         }label:{
-                            Text("CLUE one")
+                            Text("CLUE 1")
                                 .padding()
                                 .monospaced()
                                 .foregroundStyle(.black)
@@ -100,20 +102,134 @@ struct Riddles: View {
                         }
                         Spacer()
                     }
+                    Button{
+                        isFourthTextVisible = true
+                        isThirdTextVisible = false
+                    }label:{
+                        
+                        Text("NEXT")
+                            .padding()
+                            .monospaced()
+                            .foregroundStyle(.black)
+                            .background {
+                                RoundedRectangle(cornerRadius: 30)
+                                    .foregroundStyle(.green)
+                                    .frame(width: 350, height: 40)
+                            }
+                        
+                    }
+                    
+                }
+                if isFourthTextVisible {
+                    VStack {
+                        TextType(fullText: "Choose carefully")
+                            .font(.largeTitle)
+                        Spacer()
+                        
+                        
+                        HStack {
+                            Button(action: {
+                                showingAlertForWrongtAnswer = true
+                            }) {
+                                Text("The City Hall")
+                                    .font(.title)
+                                    .monospaced()
+                                    .foregroundStyle(.black)
+                                    .multilineTextAlignment(.center)
+                                    .frame(width: 170, height: 170)
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 25)
+                                            .foregroundStyle(.green)
+                                    )
+                            }
+                            .padding()
+                            .alert(isPresented: $showingAlertForWrongtAnswer) {
+                                Alert(
+                                    title: Text("ANSWER IS WRONG"),
+                                    message: Text("Try again?"),
+                                    dismissButton: .default(Text("OK"))
+                                )
+                            }
+                            
+                            Button(action: {
+                                showingAlertForWrongtAnswer = true
+                            }) {
+                                Text("The Bank \n of Singapore")
+                                    .font(.title)
+                                    .monospaced()
+                                    .foregroundStyle(.black)
+                                    .multilineTextAlignment(.center)
+                                    .frame(width: 170, height: 170)
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 25)
+                                            .foregroundStyle(.green)
+                                    )
+                            }
+                            .padding()
+                            .alert(isPresented: $showingAlertForWrongtAnswer) {
+                                Alert(
+                                    title: Text("ANSWER IS WRONG"),
+                                    message: Text("Try again?"),
+                                    dismissButton: .default(Text("OK"))
+                                )
+                            }
+                        }
+                        
+                        
+                        HStack {
+                            Button(action: {
+                                showingAlertForWrongtAnswer = true
+                            }) {
+                                Text("The National Museum")
+                                    .font(.title)
+                                    .monospaced()
+                                    .foregroundStyle(.black)
+                                    .multilineTextAlignment(.center)
+                                    .frame(width: 170, height: 170)
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 25)
+                                            .foregroundStyle(.green)
+                                    )
+                            }
+                            .padding()
+                            .alert(isPresented: $showingAlertForWrongtAnswer) {
+                                Alert(
+                                    title: Text("ANSWER IS WRONG"),
+                                    message: Text("Try again?"),
+                                    dismissButton: .default(Text("OK"))
+                                )
+                            }
+                            
+                            Button(action: {
+                                showingAlertForCorrectAnswer = true
+                            }) {
+                                Text("The Marina Bay Sands")
+                                    .font(.title)
+                                    .monospaced()
+                                    .foregroundStyle(.black)
+                                    .multilineTextAlignment(.center)
+                                    .frame(width: 170, height: 170)
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 25)
+                                            .foregroundStyle(.green)
+                                    )
+                            }
+                            .padding()
+                            .alert(isPresented: $showingAlertForCorrectAnswer) {
+                                Alert(
+                                    title: Text("ANSWER IS CORRECT"),
+                                    message: Text("continue?"),
+                                    dismissButton: .default(Text("OK"))
+                                )
+                            }
+                        }
+                        Spacer()
+                    }
                 }
             }
         }
-        .onAppear{
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
-                isThirdTextVisible = false
-                isFourthTextVisble = true
-            }
-        }
-        
     }
-        
 }
-
 struct Clue1:View{
     var body: some View{
         ZStack{
@@ -148,22 +264,23 @@ struct Clue2:View{
         }
     }
 }
-struct Clue3:View{
-    var body: some View{
-        ZStack{
-            Color.black.ignoresSafeArea()
-            VStack{
-                ScrollView{
-                    Text("More than just a place for leisure, this landmark showcases the vibrant culture of Singapore, with exhibitions that mirror the richness of history and the forward-thinking spirit of a city.")
-                        .padding()
-                        .foregroundStyle(.green)
-                        .multilineTextAlignment(.center)
-                        .font(.title)
+    struct Clue3:View{
+        var body: some View{
+            ZStack{
+                Color.black.ignoresSafeArea()
+                VStack{
+                    ScrollView{
+                        Text("More than just a place for leisure, this landmark showcases the vibrant culture of Singapore, with exhibitions that mirror the richness of history and the forward-thinking spirit of a city.")
+                            .padding()
+                            .foregroundStyle(.green)
+                            .multilineTextAlignment(.center)
+                            .font(.title)
                         
+                    }
                 }
             }
         }
-    }
+    
 }
 #Preview {
     Riddles()
