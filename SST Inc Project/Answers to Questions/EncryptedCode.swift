@@ -17,6 +17,7 @@ struct EncryptedCode: View {
                 ProgressBar(progress: 0.9)
                 TextType(fullText: "ENCRYPTED CODE \n c2FuYXRoIHdhcmFk")
                     .multilineTextAlignment(.center)
+                    .font(.largeTitle)
                     
                     
                 Spacer()

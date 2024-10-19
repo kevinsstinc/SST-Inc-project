@@ -15,7 +15,7 @@ struct TextType: View {
             Color.black.ignoresSafeArea()
             VStack{
                 Text(typedText)
-                    .font(.system(size: 35, weight: .bold, design: .monospaced))
+                    .monospaced()
                     .foregroundStyle(.green)
                     .padding()
                     .onAppear{

@@ -20,7 +20,7 @@ struct ContentView: View {
                 
                     StartPage()
                         .ignoresSafeArea()
-                        .blur(radius: 1)
+                        .blur(radius: 0.6)
                 
                 
             VStack{
