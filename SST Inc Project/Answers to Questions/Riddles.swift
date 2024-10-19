@@ -51,7 +51,7 @@ struct Riddles: View {
                         Button{
                             isActive1 = true
                         }label:{
-                            Text("CLUE 1")
+                            Text("CLUE one")
                                 .padding()
                                 .monospaced()
                                 .foregroundStyle(.black)
