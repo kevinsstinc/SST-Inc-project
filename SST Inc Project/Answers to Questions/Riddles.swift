@@ -28,7 +28,7 @@ struct Riddles: View {
                         .multilineTextAlignment(.center)
                         .font(.largeTitle)
                         .onAppear{
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 5.0){
                                 isFirstTextVisible = false
                                 isSecondTextVisible = true
                             }
@@ -40,7 +40,7 @@ struct Riddles: View {
                         .multilineTextAlignment(.center)
                         .font(.largeTitle)
                         .onAppear{
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 5.0){
                                 
                                 isSecondTextVisible = false
                                 isThirdTextVisible = true

@@ -15,7 +15,7 @@ struct EncryptedCode: View {
         ZStack{
             Color.black.ignoresSafeArea()
             VStack{
-                ProgressBar(progress: 0.9)
+                ProgressBar(progress: 0.4)
                 TextType(fullText: "ENCRYPTED CODE \n c2FuYXRoIHdhcmFk")
                     .multilineTextAlignment(.center)
                     .font(.largeTitle)
