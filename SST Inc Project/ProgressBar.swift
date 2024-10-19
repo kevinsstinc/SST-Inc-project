@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ProgressBar: View {
-    @State var progress: CGFloat = 0.7
+    @State var progress: CGFloat
     @State var totalWidth: CGFloat = 300
     @State var dashWidth: CGFloat = 8
     @State var dashSpacing: CGFloat = 2
@@ -36,5 +36,5 @@ struct ProgressBar: View {
 }
 
 #Preview {
-    ProgressBar()
+    ProgressBar(progress: 0.5)
 }

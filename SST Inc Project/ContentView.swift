@@ -24,7 +24,7 @@ struct ContentView: View {
                 
                 
             VStack{
-                ProgressBar()
+                ProgressBar(progress: 0.1)
                 Spacer()
             }
             if isPopUpVisble{

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -29,6 +29,10 @@
 		0AB27BCF2C953C7C002ADE89 /* TemperaturePopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperaturePopUp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		0A2C1A552CC36B0600A8B5EB /* Answers to Questions */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "Answers to Questions"; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
 		0AB27BB72C8EF5D1002ADE89 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
@@ -47,13 +51,6 @@
 				0A166B802C95B965003725AF /* UploadingPopUp.swift */,
 			);
 			path = PopUps;
-			sourceTree = "<group>";
-		};
-		0A166B862C983DC9003725AF /* Answers to questions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Answers to questions";
 			sourceTree = "<group>";
 		};
 		0AB27BB12C8EF5D1002ADE89 = {
@@ -79,7 +76,7 @@
 				0AB27BBF2C8EF5D1002ADE89 /* ContentView.swift */,
 				0A166B8B2C983E44003725AF /* StartPage.swift */,
 				0AB27BCB2C9459A9002ADE89 /* ProgressBar.swift */,
-				0A166B862C983DC9003725AF /* Answers to questions */,
+				0A2C1A552CC36B0600A8B5EB /* Answers to Questions */,
 				0A166B842C95D3E9003725AF /* PopUps */,
 				0AB27BC12C8EF5D4002ADE89 /* Assets.xcassets */,
 				0AB27BC32C8EF5D4002ADE89 /* Preview Content */,
@@ -109,6 +106,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				0A2C1A552CC36B0600A8B5EB /* Answers to Questions */,
 			);
 			name = "SST Inc Project";
 			productName = "SST Inc Project";
