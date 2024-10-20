@@ -1,0 +1,58 @@
+import SwiftUI
+
+struct EscapeRoute: View {
+    @State private var isAnswerCorrect = false
+    @State private var userAnswer = ""
+    
+    var body: some View {
+        ZStack {
+            Color.black.ignoresSafeArea()
+            
+            VStack {
+                TextType(fullText: "How did Tall Avyan escape after the heist?")
+                    .font(.largeTitle)
+                    .multilineTextAlignment(.center)
+                
+                Spacer()
+                
+                TextField("Enter escape method", text: $userAnswer)
+                    .padding()
+                    .background(Color.black.opacity(0.1))
+                    .cornerRadius(10)
+                    .foregroundStyle(.green)
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.green, lineWidth: 2)
+                    }
+                    .padding()
+                
+                Button {
+                    checkEscapeMethod()
+                } label: {
+                    Text("SUBMIT")
+                        .padding()
+                        .foregroundStyle(.black)
+                        .background {
+                            RoundedRectangle(cornerRadius: 30)
+                                .foregroundStyle(.green)
+                                .frame(width: 350, height: 40)
+                        }
+                }
+                .alert(isPresented: $isAnswerCorrect) {
+                    Alert(title: Text("Correct!"), message: Text("Tall Avyan escaped by impersonating as his long-lost brother."), dismissButton: .default(Text("OK")))
+                }
+            }
+        }
+    }
+    
+    private func checkEscapeMethod() {
+        // Update this part to check for "hacked the incoin" as the correct answer
+        if userAnswer.lowercased() == "impersonated as his long-lost brother" {
+            isAnswerCorrect = true
+        }
+    }
+}
+
+#Preview {
+    EscapeRoute()
+}
