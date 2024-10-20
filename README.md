@@ -15,11 +15,15 @@ VERSION 1.0
    General Description:
  </h1>
 
-<h3>This app is used to find out specific details about what happened during, before or after the infamous INCoin Heist.
-It includes many confusing and cryptic puzzles to find answers to what truly happened on that day.
-Are you ready for the challenge?
+<pre>
+<h3>
+This app is used to find out specific details about what happened during,
+before or after the infamous INCoin Heist.
+It includes many confusing and cryptic puzzles to find answers
+to what truly happened on that day.
+Are you truly ready for the challenge?
 </h3>
-
+</pre>
 
 <h1>
   App Screenshots:
@@ -56,6 +60,8 @@ evan tan jing kai S1-06
   INSPIRED BY YEWTUBE
 </h3>
 
-P.S
+<pre>
+~P.S
 learn your encryptions🤑
+</pre>
 
