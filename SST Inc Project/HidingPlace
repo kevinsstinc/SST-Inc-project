@@ -1,0 +1,58 @@
+import SwiftUI
+
+struct HidingPlace: View {
+    @State private var userAnswer = ""
+    @State private var isAnswerCorrect = false
+    
+    var body: some View {
+        ZStack {
+            Color.black.ignoresSafeArea()
+            
+            VStack {
+                TextType(fullText: "Where is Tall Avyan hiding now?")
+                    .font(.largeTitle)
+                    .multilineTextAlignment(.center)
+                
+                Spacer()
+                
+                TextField("Enter the hiding place", text: $userAnswer)
+                    .padding()
+                    .background(Color.black.opacity(0.1))
+                    .cornerRadius(10)
+                    .foregroundStyle(.green)
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.green, lineWidth: 2)
+                    }
+                    .padding()
+                
+                Button {
+                    checkHidingPlace()
+                } label: {
+                    Text("SUBMIT")
+                        .padding()
+                        .foregroundStyle(.black)
+                        .background {
+                            RoundedRectangle(cornerRadius: 30)
+                                .foregroundStyle(.green)
+                                .frame(width: 350, height: 40)
+                        }
+                }
+                .alert(isPresented: $isAnswerCorrect) {
+                    Alert(title: Text("Correct!"), message: Text("u have found tall avyan in ur house \n(he can't even hide if he's tall)"), dismissButton: .default(Text("OK")))
+                }
+            }
+        }
+    }
+    
+    private func checkHidingPlace() {
+        // Update the correct answer to be "your mom's house"
+        if userAnswer.lowercased() == "in my house" {
+            isAnswerCorrect = true
+        }
+    }
+}
+
+#Preview {
+    HidingPlace()
+}
