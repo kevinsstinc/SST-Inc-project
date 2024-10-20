@@ -21,144 +21,152 @@ struct HidingPlace: View {
     @State private var answerText = ""
     @State private var showAlert = false
     @State private var isCorrectAnswer = false
+    @State private var isAnswerCorrect = false
 
     var body: some View {
         ZStack {
             Color.black.ignoresSafeArea()
-            VStack {
-                ProgressBar(progress: 0.2)
-                    .padding()
-                
-                if isFirstTextVisible {
-                    TextType(fullText: "Where is Tall Avyan hiding now?")
-                        .multilineTextAlignment(.center)
-                        .font(.largeTitle)
-                        .onAppear {
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
-                                isFirstTextVisible = false
-                                isSecondTextVisible = true
+            if isAnswerCorrect{
+                IncoinPlace()
+            }else{
+                VStack {
+                    ProgressBar(progress: 0.8)
+                        .padding()
+                    
+                    if isFirstTextVisible {
+                        TextType(fullText: "Where is Tall Avyan hiding now?")
+                            .multilineTextAlignment(.center)
+                            .font(.largeTitle)
+                            .onAppear {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+                                    isFirstTextVisible = false
+                                    isSecondTextVisible = true
+                                }
                             }
-                        }
-                }
-                
-                if isSecondTextVisible {
+                    }
+                    
+                    if isSecondTextVisible {
+                        Spacer()
+                        TextType(fullText: "I'll give you three riddles. Figure it out.")
+                            .multilineTextAlignment(.center)
+                            .font(.largeTitle)
+                            .onAppear {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+                                    isSecondTextVisible = false
+                                    isThirdTextVisible = true
+                                }
+                            }
+                    }
+                    
                     Spacer()
-                    TextType(fullText: "I'll give you three riddles. Figure it out.")
-                        .multilineTextAlignment(.center)
-                        .font(.largeTitle)
-                        .onAppear {
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
-                                isSecondTextVisible = false
-                                isThirdTextVisible = true
+                    
+                    if isThirdTextVisible {
+                        VStack {
+                            Button {
+                                isActive1 = true
+                                clue1Clicked = true
+                                checkClues()  // Check if all clues are clicked
+                            } label: {
+                                Text("CLUE 1")
+                                    .padding()
+                                    .monospaced()
+                                    .foregroundStyle(.black)
+                                    .font(.title)
+                                    .background {
+                                        RoundedRectangle(cornerRadius: 20)
+                                            .foregroundStyle(.green)
+                                    }
                             }
+                            .sheet(isPresented: $isActive1) {
+                                FirstClue()
+                            }
+                            Spacer()
+                            
+                            Button {
+                                isActive2 = true
+                                clue2Clicked = true
+                                checkClues()  // Check if all clues are clicked
+                            } label: {
+                                Text("CLUE 2")
+                                    .padding()
+                                    .monospaced()
+                                    .foregroundStyle(.black)
+                                    .font(.title)
+                                    .background {
+                                        RoundedRectangle(cornerRadius: 20)
+                                            .foregroundStyle(.green)
+                                    }
+                            }
+                            .sheet(isPresented: $isActive2) {
+                                SecondClue()
+                            }
+                            Spacer()
+                            
+                            Button {
+                                isActive3 = true
+                                clue3Clicked = true
+                                checkClues()  // Check if all clues are clicked
+                            } label: {
+                                Text("CLUE 3")
+                                    .padding()
+                                    .monospaced()
+                                    .foregroundStyle(.black)
+                                    .font(.title)
+                                    .background {
+                                        RoundedRectangle(cornerRadius: 20)
+                                            .foregroundStyle(.green)
+                                    }
+                            }
+                            .sheet(isPresented: $isActive3) {
+                                ThirdClue()
+                            }
+                            Spacer()
                         }
-                }
-                
-                Spacer()
-                
-                if isThirdTextVisible {
-                    VStack {
-                        Button {
-                            isActive1 = true
-                            clue1Clicked = true
-                            checkClues()  // Check if all clues are clicked
-                        } label: {
-                            Text("CLUE 1")
-                                .padding()
-                                .monospaced()
-                                .foregroundStyle(.black)
-                                .font(.title)
-                                .background {
-                                    RoundedRectangle(cornerRadius: 20)
-                                        .foregroundStyle(.green)
-                                }
-                        }
-                        .sheet(isPresented: $isActive1) {
-                            FirstClue()
-                        }
-                        Spacer()
-                        
-                        Button {
-                            isActive2 = true
-                            clue2Clicked = true
-                            checkClues()  // Check if all clues are clicked
-                        } label: {
-                            Text("CLUE 2")
-                                .padding()
-                                .monospaced()
-                                .foregroundStyle(.black)
-                                .font(.title)
-                                .background {
-                                    RoundedRectangle(cornerRadius: 20)
-                                        .foregroundStyle(.green)
-                                }
-                        }
-                        .sheet(isPresented: $isActive2) {
-                            SecondClue()
-                        }
-                        Spacer()
-                        
-                        Button {
-                            isActive3 = true
-                            clue3Clicked = true
-                            checkClues()  // Check if all clues are clicked
-                        } label: {
-                            Text("CLUE 3")
-                                .padding()
-                                .monospaced()
-                                .foregroundStyle(.black)
-                                .font(.title)
-                                .background {
-                                    RoundedRectangle(cornerRadius: 20)
-                                        .foregroundStyle(.green)
-                                }
-                        }
-                        .sheet(isPresented: $isActive3) {
-                            ThirdClue()
-                        }
-                        Spacer()
                     }
-                }
-
-                // Conditionally show the text box after all clues are clicked
-                if showTextBox {
-                    VStack {
-                        Text("ENTER YOUR ANSWER")
-                            .foregroundStyle(.green)
-                            .font(.title)
-                            .monospaced()
-                        
-                        TextField("Your answer here", text: $answerText)
-                            .padding()
-                            .background(Color.black.opacity(0.1))
-                            .cornerRadius(10)
-                            .foregroundStyle(.green)
-                            .overlay {
-                                RoundedRectangle(cornerRadius: 10)
-                                    .stroke(Color.green, lineWidth: 2)
-                            }
-                            .padding()
-                        
-                        Button(action: {
-                            checkAnswer()  // Check if the answer is correct
-                        }) {
-                            Text("SUBMIT ANSWER")
-                                .padding()
-                                .monospaced()
-                                .foregroundStyle(.black)
+                    
+                    // Conditionally show the text box after all clues are clicked
+                    if showTextBox {
+                        VStack {
+                            Text("ENTER YOUR ANSWER")
+                                .foregroundStyle(.green)
                                 .font(.title)
-                                .background {
-                                    RoundedRectangle(cornerRadius: 20)
-                                        .foregroundStyle(.green)
+                                .monospaced()
+                            
+                            TextField("Your answer here", text: $answerText)
+                                .padding()
+                                .background(Color.black.opacity(0.1))
+                                .cornerRadius(10)
+                                .foregroundStyle(.green)
+                                .overlay {
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .stroke(Color.green, lineWidth: 2)
                                 }
+                                .padding()
+                            
+                            Button(action: {
+                                checkAnswer()  // Check if the answer is correct
+                            }) {
+                                Text("SUBMIT ANSWER")
+                                    .padding()
+                                    .monospaced()
+                                    .foregroundStyle(.black)
+                                    .font(.title)
+                                    .background {
+                                        RoundedRectangle(cornerRadius: 20)
+                                            .foregroundStyle(.green)
+                                    }
+                            }
                         }
                     }
                 }
-            }
-            .alert(isPresented: $showAlert) {
-                Alert(title: Text("Result"),
-                      message: Text(isCorrectAnswer ? "Correct! Tall Avyan is hiding in your house." : "Try again!"),
-                      dismissButton: .default(Text("OK")))
+                .alert(isPresented: $showAlert) {
+                    Alert(title: Text("Result"),
+                          message: Text(isCorrectAnswer ? "Correct! Tall Avyan impersonated as his long-lost brother." : "Try again!"),
+                          dismissButton: .default(Text("OK")) {
+                              if isCorrectAnswer {
+                                  isAnswerCorrect = true  // Move to the next view
+                              }
+                          })                }
             }
         }
     }

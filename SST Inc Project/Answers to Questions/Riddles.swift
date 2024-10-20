@@ -17,213 +17,220 @@ struct Riddles: View {
     @State private var isActive3 = false
     @State private var showingAlertForCorrectAnswer = false
     @State private var showingAlertForWrongtAnswer = false
+    @State private var answerCorrect = false
     var body: some View {
         ZStack{
             Color.black.ignoresSafeArea()
-            VStack{
-                ProgressBar(progress: 0.2)
-                    .padding()
-                if isFirstTextVisible {
-                    TextType(fullText: "Where did the heist occur?")
-                        .multilineTextAlignment(.center)
-                        .font(.largeTitle)
-                        .onAppear{
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 5.0){
-                                isFirstTextVisible = false
-                                isSecondTextVisible = true
-                            }
-                        }
-                }
-                if isSecondTextVisible{
-                    Spacer()
-                    TextType(fullText: "I'll give you three clues. Figure it out.")
-                        .multilineTextAlignment(.center)
-                        .font(.largeTitle)
-                        .onAppear{
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 5.0){
-                                
-                                isSecondTextVisible = false
-                                isThirdTextVisible = true
-                            }
-                        }
-                }
-                Spacer()
-                if isThirdTextVisible{
-                    VStack{
-                        Button{
-                            isActive1 = true
-                        }label:{
-                            Text("CLUE 1")
-                                .padding()
-                                .monospaced()
-                                .foregroundStyle(.black)
-                                .font(.title)
-                                .background{
-                                    RoundedRectangle(cornerRadius: 20)
-                                        .foregroundStyle(.green)
-                                }
-                        }
-                        .sheet(isPresented: $isActive1) {
-                            Clue1()
-                        }
-                        Spacer()
-                        Button{
-                            isActive2 = true
-                        }label:{
-                            Text("CLUE 2")
-                                .padding()
-                                .monospaced()
-                                .foregroundStyle(.black)
-                                .font(.title)
-                                .background{
-                                    RoundedRectangle(cornerRadius: 20)
-                                        .foregroundStyle(.green)
-                                }
-                        }
-                        .sheet(isPresented: $isActive2) {
-                            Clue2()
-                        }
-                        Spacer()
-                        Button{
-                            isActive3 = true
-                        }label:{
-                            Text("CLUE 3")
-                                .padding()
-                                .monospaced()
-                                .foregroundStyle(.black)
-                                .font(.title)
-                                .background{
-                                    RoundedRectangle(cornerRadius: 20)
-                                        .foregroundStyle(.green)
-                                }
-                        }
-                        .sheet(isPresented: $isActive3) {
-                            Clue3()
-                        }
-                        Spacer()
-                    }
-                    Button{
-                        isFourthTextVisible = true
-                        isThirdTextVisible = false
-                    }label:{
-                        
-                        Text("NEXT")
-                            .padding()
-                            .monospaced()
-                            .foregroundStyle(.black)
-                            .background {
-                                RoundedRectangle(cornerRadius: 30)
-                                    .foregroundStyle(.green)
-                                    .frame(width: 350, height: 40)
-                            }
-                        
-                    }
-                    
-                }
-                if isFourthTextVisible {
-                    VStack {
-                        TextType(fullText: "Choose carefully")
+            if answerCorrect{
+                SecurityBreach()
+            }else{
+                VStack{
+                    ProgressBar(progress: 0.3)
+                        .padding()
+                    if isFirstTextVisible {
+                        TextType(fullText: "Where did the heist occur?")
+                            .multilineTextAlignment(.center)
                             .font(.largeTitle)
+                            .onAppear{
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 5.0){
+                                    isFirstTextVisible = false
+                                    isSecondTextVisible = true
+                                }
+                            }
+                    }
+                    if isSecondTextVisible{
                         Spacer()
-                        
-                        
-                        HStack {
-                            Button(action: {
-                                showingAlertForWrongtAnswer = true
-                            }) {
-                                Text("The City Hall")
-                                    .font(.title)
+                        TextType(fullText: "I'll give you three clues. Figure it out.")
+                            .multilineTextAlignment(.center)
+                            .font(.largeTitle)
+                            .onAppear{
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 5.0){
+                                    
+                                    isSecondTextVisible = false
+                                    isThirdTextVisible = true
+                                }
+                            }
+                    }
+                    Spacer()
+                    if isThirdTextVisible{
+                        VStack{
+                            Button{
+                                isActive1 = true
+                            }label:{
+                                Text("CLUE 1")
+                                    .padding()
                                     .monospaced()
                                     .foregroundStyle(.black)
-                                    .multilineTextAlignment(.center)
-                                    .frame(width: 170, height: 170)
-                                    .background(
-                                        RoundedRectangle(cornerRadius: 25)
+                                    .font(.title)
+                                    .background{
+                                        RoundedRectangle(cornerRadius: 20)
                                             .foregroundStyle(.green)
-                                    )
+                                    }
                             }
-                            .padding()
-                            .alert(isPresented: $showingAlertForWrongtAnswer) {
-                                Alert(
-                                    title: Text("ANSWER IS WRONG"),
-                                    message: Text("Try again?"),
-                                    dismissButton: .default(Text("OK"))
-                                )
+                            .sheet(isPresented: $isActive1) {
+                                Clue1()
                             }
+                            Spacer()
+                            Button{
+                                isActive2 = true
+                            }label:{
+                                Text("CLUE 2")
+                                    .padding()
+                                    .monospaced()
+                                    .foregroundStyle(.black)
+                                    .font(.title)
+                                    .background{
+                                        RoundedRectangle(cornerRadius: 20)
+                                            .foregroundStyle(.green)
+                                    }
+                            }
+                            .sheet(isPresented: $isActive2) {
+                                Clue2()
+                            }
+                            Spacer()
+                            Button{
+                                isActive3 = true
+                            }label:{
+                                Text("CLUE 3")
+                                    .padding()
+                                    .monospaced()
+                                    .foregroundStyle(.black)
+                                    .font(.title)
+                                    .background{
+                                        RoundedRectangle(cornerRadius: 20)
+                                            .foregroundStyle(.green)
+                                    }
+                            }
+                            .sheet(isPresented: $isActive3) {
+                                Clue3()
+                            }
+                            Spacer()
+                        }
+                        Button{
+                            isFourthTextVisible = true
+                            isThirdTextVisible = false
+                        }label:{
                             
-                            Button(action: {
-                                showingAlertForWrongtAnswer = true
-                            }) {
-                                Text("The Bank \n of Singapore")
-                                    .font(.title)
-                                    .monospaced()
-                                    .foregroundStyle(.black)
-                                    .multilineTextAlignment(.center)
-                                    .frame(width: 170, height: 170)
-                                    .background(
-                                        RoundedRectangle(cornerRadius: 25)
-                                            .foregroundStyle(.green)
-                                    )
-                            }
-                            .padding()
-                            .alert(isPresented: $showingAlertForWrongtAnswer) {
-                                Alert(
-                                    title: Text("ANSWER IS WRONG"),
-                                    message: Text("Try again?"),
-                                    dismissButton: .default(Text("OK"))
-                                )
-                            }
+                            Text("NEXT")
+                                .padding()
+                                .monospaced()
+                                .foregroundStyle(.black)
+                                .background {
+                                    RoundedRectangle(cornerRadius: 30)
+                                        .foregroundStyle(.green)
+                                        .frame(width: 350, height: 40)
+                                }
+                            
                         }
                         
-                        
-                        HStack {
-                            Button(action: {
-                                showingAlertForWrongtAnswer = true
-                            }) {
-                                Text("The National Museum")
-                                    .font(.title)
-                                    .monospaced()
-                                    .foregroundStyle(.black)
-                                    .multilineTextAlignment(.center)
-                                    .frame(width: 170, height: 170)
-                                    .background(
-                                        RoundedRectangle(cornerRadius: 25)
-                                            .foregroundStyle(.green)
+                    }
+                    if isFourthTextVisible {
+                        VStack {
+                            TextType(fullText: "Choose carefully")
+                                .font(.largeTitle)
+                            Spacer()
+                            
+                            
+                            HStack {
+                                Button(action: {
+                                    showingAlertForWrongtAnswer = true
+                                }) {
+                                    Text("The City Hall")
+                                        .font(.title)
+                                        .monospaced()
+                                        .foregroundStyle(.black)
+                                        .multilineTextAlignment(.center)
+                                        .frame(width: 170, height: 170)
+                                        .background(
+                                            RoundedRectangle(cornerRadius: 25)
+                                                .foregroundStyle(.green)
+                                        )
+                                }
+                                .padding()
+                                .alert(isPresented: $showingAlertForWrongtAnswer) {
+                                    Alert(
+                                        title: Text("ANSWER IS WRONG"),
+                                        message: Text("Try again?"),
+                                        dismissButton: .default(Text("OK"))
                                     )
-                            }
-                            .padding()
-                            .alert(isPresented: $showingAlertForWrongtAnswer) {
-                                Alert(
-                                    title: Text("ANSWER IS WRONG"),
-                                    message: Text("Try again?"),
-                                    dismissButton: .default(Text("OK"))
-                                )
+                                }
+                                
+                                Button(action: {
+                                    showingAlertForWrongtAnswer = true
+                                }) {
+                                    Text("The Bank \n of Singapore")
+                                        .font(.title)
+                                        .monospaced()
+                                        .foregroundStyle(.black)
+                                        .multilineTextAlignment(.center)
+                                        .frame(width: 170, height: 170)
+                                        .background(
+                                            RoundedRectangle(cornerRadius: 25)
+                                                .foregroundStyle(.green)
+                                        )
+                                }
+                                .padding()
+                                .alert(isPresented: $showingAlertForWrongtAnswer) {
+                                    Alert(
+                                        title: Text("ANSWER IS WRONG"),
+                                        message: Text("Try again?"),
+                                        dismissButton: .default(Text("OK"))
+                                    )
+                                }
                             }
                             
-                            Button(action: {
-                                showingAlertForCorrectAnswer = true
-                            }) {
-                                Text("The Marina Bay Sands")
-                                    .font(.title)
-                                    .monospaced()
-                                    .foregroundStyle(.black)
-                                    .multilineTextAlignment(.center)
-                                    .frame(width: 170, height: 170)
-                                    .background(
-                                        RoundedRectangle(cornerRadius: 25)
-                                            .foregroundStyle(.green)
+                            
+                            HStack {
+                                Button(action: {
+                                    showingAlertForWrongtAnswer = true
+                                }) {
+                                    Text("The National Museum")
+                                        .font(.title)
+                                        .monospaced()
+                                        .foregroundStyle(.black)
+                                        .multilineTextAlignment(.center)
+                                        .frame(width: 170, height: 170)
+                                        .background(
+                                            RoundedRectangle(cornerRadius: 25)
+                                                .foregroundStyle(.green)
+                                        )
+                                }
+                                .padding()
+                                .alert(isPresented: $showingAlertForWrongtAnswer) {
+                                    Alert(
+                                        title: Text("ANSWER IS WRONG"),
+                                        message: Text("Try again?"),
+                                        dismissButton: .default(Text("OK"))
                                     )
+                                }
+                                
+                                Button(action: {
+                                    showingAlertForCorrectAnswer = true
+                                }) {
+                                    Text("The Marina Bay Sands")
+                                        .font(.title)
+                                        .monospaced()
+                                        .foregroundStyle(.black)
+                                        .multilineTextAlignment(.center)
+                                        .frame(width: 170, height: 170)
+                                        .background(
+                                            RoundedRectangle(cornerRadius: 25)
+                                                .foregroundStyle(.green)
+                                        )
+                                }
+                                .padding()
+                                .alert(isPresented: $showingAlertForCorrectAnswer) {
+                                    Alert(
+                                        title: Text("ANSWER IS CORRECT"),
+                                        message: Text("continue?"),
+                                        dismissButton: .default(Text("OK")) {
+                                            answerCorrect = true  
+                                        }
+                                    )
+                                }
                             }
-                            .padding()
-                            .alert(isPresented: $showingAlertForCorrectAnswer) {
-                                Alert(
-                                    title: Text("ANSWER IS CORRECT"),
-                                    message: Text("continue?"),
-                                    dismissButton: .default(Text("OK"))
-                                )
-                            }
+                            Spacer()
                         }
-                        Spacer()
                     }
                 }
             }
