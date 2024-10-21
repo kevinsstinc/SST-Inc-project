@@ -161,7 +161,7 @@ struct HidingPlace: View {
                 }
                 .alert(isPresented: $showAlert) {
                     Alert(title: Text("Result"),
-                          message: Text(isCorrectAnswer ? "Correct! Tall Avyan impersonated as his long-lost brother." : "Try again!"),
+                          message: Text(isCorrectAnswer ? "Correct! Tall Avyan is hiding in your house!" : "Try again!"),
                           dismissButton: .default(Text("OK")) {
                               if isCorrectAnswer {
                                   isAnswerCorrect = true  // Move to the next view

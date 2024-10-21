@@ -131,7 +131,7 @@ struct IncoinPlace: View {
                                         }
                                         .alert(isPresented: $hint) {
                                             Alert(title: Text("HINT"),
-                                                  message: Text("Almost done."),
+                                                  message: Text("I heard this encrypter sounds like vinegar"),
                                                   dismissButton: .default(Text("OK")))
                                         }
                                         Spacer()
